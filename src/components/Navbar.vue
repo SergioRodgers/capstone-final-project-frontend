@@ -29,13 +29,13 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/" style="color:rgb(209, 209, 209);">Home</a>
+          <router-link to="/" style="color:rgb(209, 209, 209);">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about" style="color:rgb(209, 209, 209);">About</a>
+          <router-link to="/about" style="color:rgb(209, 209, 209);padding-left:10px">About</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products" style="color:rgb(209, 209, 209);">Products</a>
+          <router-link to="/products" style="color:rgb(209, 209, 209);padding-left:10px">Products</router-link>
         </li>
         
         
@@ -48,14 +48,15 @@
     
     <div class="d-flex align-items-center">
       <!-- Icon -->
-      <a class="nav-link" href="/signup" style="color:rgb(209, 209, 209);">Sign up</a>
-      <a class="nav-link" href="/cart" style="color:rgb(209, 209, 209);">Cart</a>
+      <router-link to="/signup" style="color:rgb(209, 209, 209);">Sign up</router-link>
+      <router-link to="/cart" style="color:rgb(209, 209, 209);padding-left:10px">Cart</router-link>
       
 
       <!-- Notifications -->
       <!-- Avatar -->
       <div class="dropdown">
         <a
+          style="padding-left:10px"
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
           href="/profile"
           id="navbarDropdownMenuAvatar"
