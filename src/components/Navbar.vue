@@ -55,23 +55,15 @@
       <!-- Notifications -->
       <!-- Avatar -->
       <div class="dropdown">
-        <a
-          style="padding-left:10px"
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="/profile"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <router-link to="/profile" style="padding-left:10px">
           <img
             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             class="rounded-circle"
             height="25"
             alt="Profile picture"
             loading="lazy"
-          />
-        </a>
+          >
+        </router-link>
         <ul
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuAvatar"
