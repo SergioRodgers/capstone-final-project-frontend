@@ -66,6 +66,7 @@ this.$router.push({name:login})
 </script>
 
 <style>
+
 .landing{
      background-image: url(https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80);
      height: 100vh;
@@ -77,6 +78,7 @@ this.$router.push({name:login})
 .heading{
     font-size: 50px;
     padding-top: 50px;
+    color: white;    
 }
 p{
     font-size:25px;
