@@ -47,7 +47,7 @@
     <h5 class="card-title">{{product.title}}</h5>
     <p class="card-text">{{product.price}}</p>
     <a href="/cart" class="btn btn-primary"> {{AddCart}} Add to cart</a>
-    <a class="btn btn-danger" onclick="delete">Delete</a>
+    <a class="btn btn-danger" v-on:click="delete(product.id)">Delete</a>
   </div>
 </div>
 
@@ -71,7 +71,7 @@ export default {
       async created () {
   
     try {
-      const res = await fetch('http://localhost:5000/products')
+      const res = await fetch('https://capstone-final-lc-project.herokuapp.com/products')
       this.products = await res.json()
    
     } catch (error) {
@@ -80,9 +80,14 @@ export default {
     }
   }
 }
-fetch('http://localhost:5000/product/:id', {
+
+fetch( "https://capstone-final-lc-project.herokuapp.com/products/${id}", {
   method: 'DELETE',
-});
+})
+.then((res) => res.json()) // or res.json()
+.then((data) => {
+  this.products = data;
+})
 
 </script>
 
@@ -93,7 +98,7 @@ fetch('http://localhost:5000/product/:id', {
   /* background-image: url(https://images.unsplash.com/photo-1619455052599-4cded9ae462a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80); */
   background: cover;
   height: 150vh;
-  width: 100% !important;
+  width: 100%;
   background-color: rgba(4, 0, 26, 0.958);
 }
 

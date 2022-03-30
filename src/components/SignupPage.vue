@@ -64,12 +64,12 @@ data(){
  methods: {
 signup() 
  {
-  console.log(this.username, this.email, this.password,)
-  fetch("http://localhost:5000/users", {
+  // console.log(this.username, this.email, this.password,)
+  fetch("https://capstone-final-lc-project.herokuapp.com/users", {
     method: 'POST',
         body: JSON.stringify(
           {
-            name: this.username,
+          username: this.username,
           email: this.email,
           password: this.password,
         }
@@ -81,13 +81,10 @@ signup()
       })
         .then((response) => response.json())
         .then((json) => {
-          if(json.jwt){
+          if(json){
             alert('You are now registered')
-            localStorage.setItem("jwt", json.jwt);
-            this.$router.push({ name: "ProductPage" });
-          }
-          else{
-            alert("Incorrect Credentials try again");
+            // localStorage.setItem("jwt", json.jwt);
+            this.$router.push({ name: "Home" });
           }
         })
         .catch((err) => {
@@ -96,26 +93,7 @@ signup()
     },
 
           },
-          };
-// mounted(){
-//    fetch('http://localhost:5000/auth/register', {
-//   method: 'POST',
-//   body: JSON.stringify({
-//     username: this.username,
-//     email: this.email ,
-//     password: this.password,
-//   }),
-//   headers: {
-//     'Content-type': 'application/json; charset=UTF-8',
-//   },
-// })
-//   .then((response) => response.json())
-//  .then((json) => {
-//      alert("Successfully signed up");
-//      this.$router.push({name:'ProductPage'})
-//  })
-// }
-
+}
 </script>
 
 <style>

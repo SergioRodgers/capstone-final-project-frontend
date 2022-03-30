@@ -54,11 +54,13 @@
 
       <!-- Notifications -->
       <!-- Avatar -->
+      <div class="profile">
         <router-link to="/profile" style="padding-left:10px">
           <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             class="rounded-circle"
             height="25">
         </router-link>
+      </div>
     </div>
     <!-- Right elements -->
   </div>

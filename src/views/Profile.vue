@@ -10,7 +10,9 @@ export default {
   components: {
     ProfilePage,
   }
-}
+  
+  }
+
 </script>
 
 <style>
