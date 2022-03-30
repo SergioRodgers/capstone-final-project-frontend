@@ -43,56 +43,46 @@ export default {
  alert("Login successful")
   this.$router.push({ name: "ProductPage" });
 
-//             fetch('https://capstone-final-lc-project.herokuapp.com/auth/login', {
-//                 method: 'POST',
-//   body: JSON.stringify({
-//     email: this.email ,
-//     password: this.password,
-//   }),
-//   headers: {
-//       'Content-type': 'application/json; charset=UTF-8',
-//   },
-// })
-// .then((response) => response.json())
-//         .then((json) => {
-//           if (json.jwt) {
-//             localStorage.setItem("jwt", json.jwt);
-//           localStorage.setItem("id", json.user._id);
-//           localStorage.setItem("name", json.user.name);
-//           localStorage.setItem("avatar", json.user.avatar);
-//           localStorage.setItem("email", json.user.email);
-//           localStorage.setItem("contact", json.user.contact);
-//             alert("user logged in");
-//             console.log("JSON", json);
-//             this.$router.push({name:'ProductPage'})
-//             localStorage.setItem("jwt", json.jwt);
-//             localStorage.setItem("user", JSON.stringify(json.user));
-//             localStorage.setItem("isAdmin", JSON.stringify(json.user.isAdmin));
-//             // console.log(json.user)
-//             this.$emit("login");
-//           }
-//           if (localStorage.getItem("jwt")) {
-//             this.$router.push({ name: "Home" });
-//           } else {
-//             alert("Incorrect credentials");
-//           }
-//         })
-//         }
+            fetch('https://capstone-final-lc-project.herokuapp.com/auth/login', {
+                method: 'POST',
+  body: JSON.stringify({
+    email: this.email ,
+    password: this.password,
+  }),
+  headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+.then((response) => response.json())
+        .then((json) => {
+          if (json.jwt) {
+            localStorage.setItem("jwt", json.jwt);
+          localStorage.setItem("id", json.user._id);
+          localStorage.setItem("name", json.user.name);
+          localStorage.setItem("avatar", json.user.avatar);
+          localStorage.setItem("email", json.user.email);
+          localStorage.setItem("contact", json.user.contact);
+            alert("user logged in");
+            console.log("JSON", json);
+            this.$router.push({name:'ProductPage'})
+            localStorage.setItem("jwt", json.jwt);
+            localStorage.setItem("user", JSON.stringify(json.user));
+            localStorage.setItem("isAdmin", JSON.stringify(json.user.isAdmin));
+            // console.log(json.user)
+            this.$emit("login");
+          }
+          if (localStorage.getItem("jwt")) {
+            this.$router.push({ name: "Home" });
+          } else {
+            alert("Incorrect credentials");
+          }
+        })
+        }
     }
 }
 
-//   .then((response) => response.json())
-//  .then((json) => {
-//      alert("user logged in");
-//      this.$router.push({name:'ProductPage'})
-//  })
-//  .catch((err) =>{
-//      alert('wrong creditials');
-// this.$router.push({name:login})
-//  })
-//      }
-// }
-}
+ 
+
 </script>
 
 <style>

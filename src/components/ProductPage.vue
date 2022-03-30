@@ -54,9 +54,9 @@
   </div>
 </div>
 
-<!-- <a class="nav-link" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<a class="nav-link" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add a product
-</a> -->
+</a>
 
 <!-- Modal for add  product -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,8 +124,8 @@ export default {
       fetch("https://capstone-final-lc-project.herokuapp.com/products", {
         method: "POST",
         body: JSON.stringify({
-          name: this.name,
-          category: this.category,
+          title: this.title,
+          categories: this.categories,
           price: this.price,
           img: this.img,
         })
@@ -142,7 +142,7 @@ export default {
     // update
     updateProduct() {
     
-      fetch("https://nike-store-api.herokuapp.com/products/" + products._id, {
+      fetch("https://capstone-final-lc-project.herokuapp.com/products" + products._id, {
         method: "PUT",
         body: JSON.stringify({
           name: this.name,

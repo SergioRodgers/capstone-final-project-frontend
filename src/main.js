@@ -9,6 +9,9 @@ import 'mdb-ui-kit/css/mdb.min.css';
 library.add(fas);
     
 
+import "bootstrap/dist/css/bootstrap.css"
+
+import "bootstrap/dist/js/bootstrap.js"
 
 createApp(App)
 .component('fa',FontAwesomeIcon)
