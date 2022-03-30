@@ -54,6 +54,47 @@
   </div>
 </div>
 
+<!-- <a class="nav-link" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add a product
+</a> -->
+
+<!-- Modal for add  product -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Nike</h5>
+        
+        <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form @submit.prevent="createProduct">
+        <ul>
+          <li>NAME</li>
+          <li> <input v-model="name" required type="text"></li>
+          <li>PRICE</li>
+          <li> <input v-model="price" required type="number"></li>
+          <li>IMAGE URL</li>
+          <li> <input v-model="img" required  type="text"></li>
+<label for="genre">CATEGORY:</label>
+<select id="genre" v-model="category" name="genre">
+  <option value="Shoes">Shoes</option>
+  <option value="Accessories">Accessories</option>
+  <option value="Clothing">Clothing</option>
+
+</select>        </ul>
+
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Save changes</button>
+        </div>
+       </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
 
   </section>
 </template>
@@ -65,9 +106,6 @@ export default {
       products:null
     }
   },
- mounted(){
-     
-      },
       async created () {
   
     try {
@@ -78,16 +116,110 @@ export default {
       console.log(error)
     
     }
-  }
+  },
+  methods: {
+    //  create
+    createProduct() {
+    
+      fetch("https://capstone-final-lc-project.herokuapp.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.name,
+          category: this.category,
+          price: this.price,
+          img: this.img,
+        })
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Created (REFRESH TO SEE ITEM)");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+    // update
+    updateProduct() {
+    
+      fetch("https://nike-store-api.herokuapp.com/products/" + products._id, {
+        method: "PUT",
+        body: JSON.stringify({
+          name: this.name,
+          category: this.category,
+          price: this.price,
+          img: this.img,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Edited");
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+    // delete product
+    deleteProduct(id){
+      const config = {
+
+};
+                let apiURL = `https://capstone-final-lc-project.herokuapp.com/products/${id}`;
+                
+                let indexOfArrayItem = this.products.findIndex(i => i._id === id);
+                if (window.confirm("Do you really want to delete?")) {
+                    axios.delete(apiURL, config).then(() => {
+                        this.products.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
+            }
+  },
+    // search
+      computed: {
+    filteredProducts: function() {
+      return this.products.filter((product) => {
+        return product.name.match(this.hello)
+      })
+    },
+    filteredProductsByName() {
+    let tempproducts = this.products
+  
+    // Sort by alphabetical order
+        tempproducts = tempproducts.sort((a, b) => {
+            if (this.sortBy == 'alphabetically') {
+                let fa = a.name.toLowerCase(), fb = b.name.toLowerCase()
+          
+              if (fa < fb) {
+                return -1
+              }
+              if (fa > fb) {
+                return 1 
+              }
+              return 0
+              
+            } 
+        })
+    
+       
+        
+        return tempproducts
+  },
+  // find
+    filterProductsByCategory: function(){
+                return this.products.filter(product => !product.category.indexOf(this.category))
+            }
 }
 
-fetch( "https://capstone-final-lc-project.herokuapp.com/products/${id}", {
-  method: 'DELETE',
-})
-.then((res) => res.json()) // or res.json()
-.then((data) => {
-  this.products = data;
-})
+}
+
+
 
 </script>
 

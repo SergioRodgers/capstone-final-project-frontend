@@ -65,7 +65,7 @@ data(){
 signup() 
  {
   // console.log(this.username, this.email, this.password,)
-  fetch("https://capstone-final-lc-project.herokuapp.com/users", {
+  fetch("https://capstone-final-lc-project.herokuapp.com/user", {
     method: 'POST',
         body: JSON.stringify(
           {
